@@ -64,14 +64,43 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSDateFormatter *dateFormatter = nil;
+    if (dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    }
+    
+    static NSNumberFormatter *numberFormatter = nil;
+    if (numberFormatter == nil) {
+        numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        numberFormatter.maximumFractionDigits = 3;
+    }
+    
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    //PFObject *tempObject = [self.foodReports objectAtIndex:indexPath.row];
+    //cell.textLabel.text = [tempObject objectForKey:@"event"];
     PFObject *tempObject = [self.foodReports objectAtIndex:indexPath.row];
-    cell.textLabel.text = [tempObject objectForKey:@"event"];
-
+    PFGeoPoint *geoPoint = [tempObject objectForKey:@"location"];
+    double lat = geoPoint.latitude;
+    //NSLog(@"%@", tempObject);
+    NSLog(@"Geopoint: %@", geoPoint);
+    NSLog(@"Latitude: %f", lat);
+    cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
+    NSString *string = [NSString stringWithFormat:@"%@, %@",
+                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
+                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
+    cell.detailTextLabel.text = string;
     //cell.textLabel.text = [self.foodReports objectAtIndex:indexPath.row];
-    
-    
     return cell;
 }
 
