@@ -11,6 +11,6 @@
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *foodReports;
+@property (weak, nonatomic) IBOutlet UITableView *reportTableView;
 
 @end
-
