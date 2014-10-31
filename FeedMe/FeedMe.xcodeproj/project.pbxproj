@@ -31,6 +31,8 @@
 		E56D1BAD1A01CD1500FF5372 /* KnockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1BAC1A01CD1500FF5372 /* KnockViewController.m */; };
 		E56D1BAF1A01D0CE00FF5372 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56D1BAE1A01D0CE00FF5372 /* UIKit.framework */; };
 		E56D1BB21A01D5A300FF5372 /* knockDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1BB11A01D5A300FF5372 /* knockDetector.m */; };
+		E5E0A0F11A034A1300D747CF /* restaurant-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0A0F01A034A1300D747CF /* restaurant-32.png */; };
+		E5E0A0F31A034A2800D747CF /* report_card-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0A0F21A034A2700D747CF /* report_card-32.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		E56D1BAE1A01D0CE00FF5372 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E56D1BB01A01D59D00FF5372 /* knockDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = knockDetector.h; path = ../../../../Downloads/knockDetector.h; sourceTree = "<group>"; };
 		E56D1BB11A01D5A300FF5372 /* knockDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = knockDetector.m; path = ../../../../Downloads/knockDetector.m; sourceTree = "<group>"; };
+		E5E0A0F01A034A1300D747CF /* restaurant-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "restaurant-32.png"; path = "../../../Downloads/icons8_lightbox/32/restaurant-32.png"; sourceTree = "<group>"; };
+		E5E0A0F21A034A2700D747CF /* report_card-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "report_card-32.png"; path = "../../../Downloads/icons8_lightbox (1)/32/report_card-32.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 		E56D1B581A01BFC200FF5372 = {
 			isa = PBXGroup;
 			children = (
+				E5E0A0F21A034A2700D747CF /* report_card-32.png */,
+				E5E0A0F01A034A1300D747CF /* restaurant-32.png */,
 				E56D1BAE1A01D0CE00FF5372 /* UIKit.framework */,
 				E56D1BA31A01C22D00FF5372 /* SystemConfiguration.framework */,
 				E56D1BA11A01C22600FF5372 /* StoreKit.framework */,
@@ -286,6 +292,8 @@
 				E56D1B701A01BFC300FF5372 /* Main.storyboard in Resources */,
 				E56D1B751A01BFC300FF5372 /* LaunchScreen.xib in Resources */,
 				E56D1B721A01BFC300FF5372 /* Images.xcassets in Resources */,
+				E5E0A0F11A034A1300D747CF /* restaurant-32.png in Resources */,
+				E5E0A0F31A034A2800D747CF /* report_card-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +520,7 @@
 				E56D1B861A01BFC300FF5372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E56D1B871A01BFC300FF5372 /* Build configuration list for PBXNativeTarget "FeedMeTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +529,7 @@
 				E56D1B891A01BFC300FF5372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
