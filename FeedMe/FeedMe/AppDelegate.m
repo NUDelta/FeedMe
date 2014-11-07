@@ -21,6 +21,27 @@
                   clientKey:@"VSx241clNpLEUWnzAh9dOgEwsMuYWTLza7Z3bo1n"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     // Override point for customization after application launch.
+    
+    //Register for Local Notifications
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+    // Register for Push Notitications, if running iOS 8
+    //    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    //        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+    //                                                        UIUserNotificationTypeBadge |
+    //                                                        UIUserNotificationTypeSound);
+    //        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+    //                                                                                 categories:nil];
+    //        [application registerUserNotificationSettings:settings];
+    //        [application registerForRemoteNotifications];
+    //    } else {
+    //        // Register for Push Notifications before iOS 8
+    //        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+    //                                                         UIRemoteNotificationTypeAlert |
+    //                                                         UIRemoteNotificationTypeSound)];
+    //    }
     return YES;
 }
 

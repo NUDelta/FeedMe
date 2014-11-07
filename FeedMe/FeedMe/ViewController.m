@@ -51,12 +51,17 @@
     NSLog(@"made it to starti");
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+   
+//    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+//        [self.locationManager requestAlwaysAuthorization];
+//        NSLog(@"made it here");
+//    }
+    [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager requestWhenInUseAuthorization];
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [self.locationManager requestAlwaysAuthorization];
-        NSLog(@"made it here");
-    }
+    [self.locationManager startUpdatingLocation];
+
     NSLog(@"made it to end");
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];
 }
