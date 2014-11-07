@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 Delta Hackers. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSArray *foodReports;
 @property (weak, nonatomic) IBOutlet UITableView *reportTableView;
