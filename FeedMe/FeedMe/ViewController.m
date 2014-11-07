@@ -30,21 +30,8 @@
     [self initUI];
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];
     [self initLocationListener];
-    /*self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [self.locationManager requestAlwaysAuthorization];
-    }
-    [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];*/
-    
-    // Do any additional setup after loading the view, typically from a nib.
+
     //self.foodReports = [[NSArray alloc] initWithObjects: @"Food 1", @"Food 2", @"Food 3", nil];
-    /*float latitude = self.locationManager.location.coordinate.latitude;
-    float longitude = self.locationManager.location.coordinate.longitude;
-    NSLog(@"Latitude: %f", latitude);
-    NSLog(@"Longitude: %f", longitude);*/
 }
 
 - (void) initLocationListener {
@@ -87,6 +74,20 @@
 }
 
 - (void) initUI {
+    // format times
+    /*NSDate *localDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
+    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
+    NSInteger day = [components day];
+    NSLog(@"component day %d", day);*/
+    // [dateFormatter release];
+    // NSLog(@"date is %@", localDate);
+    // table view
     self.reportTableView.delegate = self;
     self.reportTableView.dataSource = self;
     PFQuery *query = [PFQuery queryWithClassName:@"FoodReport"];
@@ -98,10 +99,18 @@
             // find succeeded, first 100 objects available in objects
             NSLog(@"Success %d", self.foodReports.count);
             for (PFObject *object in self.foodReports) {
-                NSLog(@"%@", object.objectId);
-                //NSString *location = object[@"location"];
-                //NSLog(@"%@", location);
-                NSString *event = object[@"event"];
+                NSLog(@"%@", object.createdAt);
+//                NSLog(@"formatted time is %@", [dateFormatter stringFromDate:object.createdAt]);
+//                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:object.createdAt];
+//                NSInteger day = [components day];
+//                NSLog(@"component day of object %d", day);
+//                //NSString *location = object[@"location"];
+//                //NSLog(@"%@", location);
+//                NSTimeInterval secondsBetween = [object.createdAt timeIntervalSinceDate:localDate];
+//                
+//                int numberOfDays = (secondsBetween / 86400) * -1;
+//                
+//                NSLog(@"Food was reported %d days ago.", numberOfDays);
             }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -124,12 +133,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSDateFormatter *dateFormatter = nil;
+    /*static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil) {
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.timeStyle = NSDateFormatterMediumStyle;
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    }
+    }*/
     
     static NSNumberFormatter *numberFormatter = nil;
     if (numberFormatter == nil) {
@@ -155,10 +164,28 @@
     //NSLog(@"%@", tempObject);
     //NSLog(@"Geopoint: %@", geoPoint);
     //NSLog(@"Latitude: %f", lat);
+    NSDate *localDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
+    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
+    NSInteger day = [components day];
+    //NSString *location = object[@"location"];
+    //NSLog(@"%@", location);
+    NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
+    
+    int numberOfDays = (secondsBetween / 86400) * -1;
+    
+    NSLog(@"Food was reported %d days ago.", numberOfDays);
+    
     cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
-    NSString *string = [NSString stringWithFormat:@"%@, %@",
-                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
-                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
+    NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago.", numberOfDays];
+//    NSString *string = [NSString stringWithFormat:@"%@, %@",
+//                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
+//                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
     cell.detailTextLabel.text = string;
     //cell.textLabel.text = [self.foodReports objectAtIndex:indexPath.row];
     return cell;
