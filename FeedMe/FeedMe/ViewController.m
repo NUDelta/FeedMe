@@ -176,17 +176,29 @@
     //NSString *location = object[@"location"];
     //NSLog(@"%@", location);
     NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
-    
+    int numberOfMinutes = (secondsBetween / 60) * -1;
+    int numberOfHours = (secondsBetween / 3600) * -1;
     int numberOfDays = (secondsBetween / 86400) * -1;
     
-    NSLog(@"Food was reported %d days ago.", numberOfDays);
+    NSLog(@"Food was reported %d days, %d hours ago.", numberOfDays, numberOfHours);
     
+    // conditional cell formatting
     cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
-    NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago.", numberOfDays];
+    if (numberOfMinutes > 60 && numberOfHours < 24) {
+        NSString *string = [NSString stringWithFormat:@"Food was reported %d hours ago.", numberOfHours];
+        cell.detailTextLabel.text = string;
+    } else if (numberOfHours > 24) {
+        NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago.", numberOfDays];
+        cell.detailTextLabel.text = string;
+    } else {
+        NSString *string = [NSString stringWithFormat:@"Food was reported %d minutes ago.", numberOfMinutes];
+        cell.detailTextLabel.text = string;
+    }
+//    NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago, %d hours, %d minutes ago.", numberOfDays, numberOfHours, numberOfMinutes];
 //    NSString *string = [NSString stringWithFormat:@"%@, %@",
 //                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
 //                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
-    cell.detailTextLabel.text = string;
+    
     //cell.textLabel.text = [self.foodReports objectAtIndex:indexPath.row];
     return cell;
 }
