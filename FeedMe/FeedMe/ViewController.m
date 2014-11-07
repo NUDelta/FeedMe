@@ -10,8 +10,12 @@
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ViewController ()
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@interface ViewController () {
+    // @property (strong, nonatomic) CLLocationManager *locationManager;
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
+
 @end
 
 @implementation ViewController
@@ -35,31 +39,28 @@
 }
 
 - (void) initLocationListener {
-    NSLog(@"made it to starti");
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
    
 //    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
 //        [self.locationManager requestAlwaysAuthorization];
 //        NSLog(@"made it here");
 //    }
-    [self.locationManager requestAlwaysAuthorization];
-    [self.locationManager requestWhenInUseAuthorization];
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-
-    NSLog(@"made it to end");
+    [locationManager requestAlwaysAuthorization];
+    [locationManager requestWhenInUseAuthorization];
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"Test %@", [locations lastObject]);
+    // NSLog(@"Test %@", [locations lastObject]);
+    currentLocation = [locations objectAtIndex:0];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        [self.locationManager startUpdatingLocation];
+        [locationManager startUpdatingLocation];
     }
 }
 
@@ -74,19 +75,6 @@
 }
 
 - (void) initUI {
-    // format times
-    /*NSDate *localDate = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
-    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
-    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
-    
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
-    NSInteger day = [components day];
-    NSLog(@"component day %d", day);*/
-    // [dateFormatter release];
-    // NSLog(@"date is %@", localDate);
     // table view
     self.reportTableView.delegate = self;
     self.reportTableView.dataSource = self;
@@ -98,20 +86,9 @@
             _foodReports = [[NSArray alloc]initWithArray:objects];
             // find succeeded, first 100 objects available in objects
             NSLog(@"Success %d", self.foodReports.count);
-            for (PFObject *object in self.foodReports) {
-                NSLog(@"%@", object.createdAt);
-//                NSLog(@"formatted time is %@", [dateFormatter stringFromDate:object.createdAt]);
-//                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:object.createdAt];
-//                NSInteger day = [components day];
-//                NSLog(@"component day of object %d", day);
-//                //NSString *location = object[@"location"];
-//                //NSLog(@"%@", location);
-//                NSTimeInterval secondsBetween = [object.createdAt timeIntervalSinceDate:localDate];
-//                
-//                int numberOfDays = (secondsBetween / 86400) * -1;
-//                
-//                NSLog(@"Food was reported %d days ago.", numberOfDays);
-            }
+//            for (PFObject *object in self.foodReports) {
+//                NSLog(@"%@", object.createdAt);
+//            }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -160,10 +137,24 @@
     //cell.textLabel.text = [tempObject objectForKey:@"event"];
     PFObject *tempObject = [self.foodReports objectAtIndex:indexPath.row];
     PFGeoPoint *geoPoint = [tempObject objectForKey:@"location"];
-    double lat = geoPoint.latitude;
-    //NSLog(@"%@", tempObject);
-    //NSLog(@"Geopoint: %@", geoPoint);
-    //NSLog(@"Latitude: %f", lat);
+    double objectLat = geoPoint.latitude;
+    
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *currentgeoPoint, NSError *error) {
+        if (!error){
+            NSLog(@"distance %f", [currentgeoPoint distanceInMilesTo:geoPoint]);
+            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+            [numberFormatter setLocale:[NSLocale currentLocale]];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [numberFormatter setMaximumFractionDigits:1];
+            cell.textLabel.text = [NSString stringWithFormat:@"Food spotted %@ miles away", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[currentgeoPoint distanceInMilesTo:geoPoint]]]];
+        }
+        else {
+            UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:[error description] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
+                [errorAlert show];
+        }
+    }];
+    
+    // time formatting
     NSDate *localDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
@@ -172,26 +163,21 @@
     NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
-    NSInteger day = [components day];
-    //NSString *location = object[@"location"];
-    //NSLog(@"%@", location);
     NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
     int numberOfMinutes = (secondsBetween / 60) * -1;
     int numberOfHours = (secondsBetween / 3600) * -1;
     int numberOfDays = (secondsBetween / 86400) * -1;
     
-    NSLog(@"Food was reported %d days, %d hours ago.", numberOfDays, numberOfHours);
-    
     // conditional cell formatting
-    cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
+    //cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
     if (numberOfMinutes > 60 && numberOfHours < 24) {
-        NSString *string = [NSString stringWithFormat:@"Food was reported %d hours ago.", numberOfHours];
+        NSString *string = [NSString stringWithFormat:@"Reported %d hours ago", numberOfHours];
         cell.detailTextLabel.text = string;
     } else if (numberOfHours > 24) {
-        NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago.", numberOfDays];
+        NSString *string = [NSString stringWithFormat:@"Reported %d days ago", numberOfDays];
         cell.detailTextLabel.text = string;
     } else {
-        NSString *string = [NSString stringWithFormat:@"Food was reported %d minutes ago.", numberOfMinutes];
+        NSString *string = [NSString stringWithFormat:@"Reported %d minutes ago", numberOfMinutes];
         cell.detailTextLabel.text = string;
     }
 //    NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago, %d hours, %d minutes ago.", numberOfDays, numberOfHours, numberOfMinutes];
