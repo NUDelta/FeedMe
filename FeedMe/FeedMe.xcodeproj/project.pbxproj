@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E53821E31A1DA44A0092D6D7 /* UIColor+BiteNow.m in Sources */ = {isa = PBXBuildFile; fileRef = E53821E01A1DA44A0092D6D7 /* UIColor+BiteNow.m */; };
+		E53821E41A1DA44A0092D6D7 /* UIImage+BiteNow.m in Sources */ = {isa = PBXBuildFile; fileRef = E53821E21A1DA44A0092D6D7 /* UIImage+BiteNow.m */; };
 		E56D1B671A01BFC300FF5372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B661A01BFC300FF5372 /* main.m */; };
 		E56D1B6A1A01BFC300FF5372 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B691A01BFC300FF5372 /* AppDelegate.m */; };
 		E56D1B6D1A01BFC300FF5372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B6C1A01BFC300FF5372 /* ViewController.m */; };
@@ -46,6 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E53821DF1A1DA44A0092D6D7 /* UIColor+BiteNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+BiteNow.h"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIColor+BiteNow.h"; sourceTree = "<group>"; };
+		E53821E01A1DA44A0092D6D7 /* UIColor+BiteNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+BiteNow.m"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIColor+BiteNow.m"; sourceTree = "<group>"; };
+		E53821E11A1DA44A0092D6D7 /* UIImage+BiteNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+BiteNow.h"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIImage+BiteNow.h"; sourceTree = "<group>"; };
+		E53821E21A1DA44A0092D6D7 /* UIImage+BiteNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+BiteNow.m"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIImage+BiteNow.m"; sourceTree = "<group>"; };
+		E53821E51A1DA4B40092D6D7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E56D1B611A01BFC300FF5372 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56D1B651A01BFC300FF5372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E56D1B661A01BFC300FF5372 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -150,6 +157,10 @@
 		E56D1B631A01BFC300FF5372 /* FeedMe */ = {
 			isa = PBXGroup;
 			children = (
+				E53821DF1A1DA44A0092D6D7 /* UIColor+BiteNow.h */,
+				E53821E01A1DA44A0092D6D7 /* UIColor+BiteNow.m */,
+				E53821E11A1DA44A0092D6D7 /* UIImage+BiteNow.h */,
+				E53821E21A1DA44A0092D6D7 /* UIImage+BiteNow.m */,
 				E56D1BB11A01D5A300FF5372 /* knockDetector.m */,
 				E56D1BB01A01D59D00FF5372 /* knockDetector.h */,
 				E56D1BAA1A01CCB400FF5372 /* coreMotionListener.h */,
@@ -173,6 +184,7 @@
 			children = (
 				E56D1B651A01BFC300FF5372 /* Info.plist */,
 				E56D1B661A01BFC300FF5372 /* main.m */,
+				E53821E51A1DA4B40092D6D7 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -312,9 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53821E41A1DA44A0092D6D7 /* UIImage+BiteNow.m in Sources */,
 				E56D1B6D1A01BFC300FF5372 /* ViewController.m in Sources */,
 				E56D1B6A1A01BFC300FF5372 /* AppDelegate.m in Sources */,
 				E56D1BA91A01CCAD00FF5372 /* coreMotionListener.m in Sources */,
+				E53821E31A1DA44A0092D6D7 /* UIColor+BiteNow.m in Sources */,
 				E56D1B671A01BFC300FF5372 /* main.m in Sources */,
 				E56D1BB21A01D5A300FF5372 /* knockDetector.m in Sources */,
 				E56D1BAD1A01CD1500FF5372 /* KnockViewController.m in Sources */,
@@ -441,11 +455,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicole Zhu (6H4V465UD3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicole Zhu (6H4V465UD3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Northwestern University";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FeedMe/PrefixHeader.pch;
 				INFOPLIST_FILE = FeedMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,6 +479,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FeedMe/PrefixHeader.pch;
 				INFOPLIST_FILE = FeedMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

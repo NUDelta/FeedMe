@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  FeedMe
+//
+//  Created by Nicole Zhu on 11/19/14.
+//  Copyright (c) 2014 Delta Hackers. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #import "UIImage+BiteNow.h"
+    #import "UIColor+BiteNow.h"
+#endif

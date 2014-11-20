@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AudioToolbox/AudioServices.h>
+#import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
 #import "coreMotionListener.h"
 #import "knockDetector.h"
 
-@interface KnockViewController : UIViewController<KnockDetectorDelegate, CLLocationManagerDelegate>
-- (void)detectorDidDetectKnock:(knockDetector*) detector;
+@interface KnockViewController : UIViewController<UIAlertViewDelegate, KnockDetectorDelegate, CLLocationManagerDelegate>
+/*- (void)detectorDidDetectKnock:(knockDetector*) detector;
 @property knockDetector *theDetector;
 @property (strong, nonatomic) NSString *foodReport;
 - (void)saveReport;
-- (void)stopTrackingLocation;
+- (void)stopTrackingLocation;*/
 @end
 

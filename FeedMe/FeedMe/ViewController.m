@@ -64,7 +64,7 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+/*- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     // Delegate of the location manager, when you have an error
     NSLog(@"didFailWithError: %@", error);
@@ -72,7 +72,7 @@
     UIAlertView *errorAlert = [[UIAlertView alloc]     initWithTitle:NSLocalizedString(@"application_name", nil) message:NSLocalizedString(@"location_error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil];
     
     [errorAlert show];
-}
+}*/
 
 - (void) initUI {
     // table view
