@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yja-1a-s2T">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -114,76 +113,96 @@
                                     <rect key="frame" x="55" y="20" width="290" height="83"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJc-AZ-Env">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me a notification when food is reported:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDl-4N-iXD">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="91" id="Tmo-Ai-bCl"/>
-                                    <constraint firstAttribute="width" constant="133" id="qHG-Kl-uo7"/>
+                                    <constraint firstAttribute="height" constant="27" id="nQe-VN-vAW">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="61"/>
+                                    </constraint>
                                 </constraints>
-                                <state key="normal" image="restaurant2">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Tmo-Ai-bCl"/>
-                                        <exclude reference="qHG-Kl-uo7"/>
+                                        <exclude reference="nQe-VN-vAW"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="Tmo-Ai-bCl"/>
-                                        <include reference="qHG-Kl-uo7"/>
+                                        <include reference="nQe-VN-vAW"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="trackButtonPressed:" destination="Ge8-Hy-6Ki" eventType="touchUpInside" id="fGc-re-hl4"/>
-                                </connections>
-                            </button>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-VE-CdS">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="Yes"/>
                                     <segment title="No"/>
                                 </segments>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="118" y="542" width="171" height="29"/>
+                                </variation>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me a notification when food is reported:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDl-4N-iXD">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJc-AZ-Env">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="OkC-Ri-SDB"/>
+                                    <constraint firstAttribute="width" constant="133" id="a59-Aa-Kgi"/>
+                                </constraints>
+                                <state key="normal" image="restaurant2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OkC-Ri-SDB"/>
+                                        <exclude reference="a59-Aa-Kgi"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OkC-Ri-SDB"/>
+                                        <include reference="a59-Aa-Kgi"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="trackButtonPressed:" destination="Ge8-Hy-6Ki" eventType="touchUpInside" id="fGc-re-hl4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YJc-AZ-Env" firstAttribute="top" secondItem="woG-Wk-39p" secondAttribute="bottom" constant="99" id="9Lj-CG-BV9"/>
-                            <constraint firstItem="20b-RC-B54" firstAttribute="leading" secondItem="863-re-qad" secondAttribute="leadingMargin" constant="39" id="Acv-yr-obg"/>
-                            <constraint firstItem="dvf-VE-CdS" firstAttribute="top" secondItem="DDl-4N-iXD" secondAttribute="bottom" constant="28" id="B4x-HX-QnT"/>
-                            <constraint firstItem="YJc-AZ-Env" firstAttribute="top" secondItem="20b-RC-B54" secondAttribute="bottom" constant="8" symbolic="YES" id="EYP-HZ-fKj"/>
-                            <constraint firstItem="DDl-4N-iXD" firstAttribute="top" secondItem="woG-Wk-39p" secondAttribute="bottom" constant="473" id="G4k-IA-nlq"/>
-                            <constraint firstItem="20b-RC-B54" firstAttribute="centerX" secondItem="863-re-qad" secondAttribute="centerX" id="N5x-dz-R0g"/>
-                            <constraint firstItem="YJc-AZ-Env" firstAttribute="centerX" secondItem="DDl-4N-iXD" secondAttribute="centerX" id="Y2d-xR-Tat"/>
-                            <constraint firstItem="YJc-AZ-Env" firstAttribute="centerX" secondItem="dvf-VE-CdS" secondAttribute="centerX" id="nu6-Uf-SpC"/>
-                            <constraint firstItem="20b-RC-B54" firstAttribute="top" secondItem="woG-Wk-39p" secondAttribute="bottom" constant="8" id="ud5-V1-uFh"/>
-                            <constraint firstItem="YJc-AZ-Env" firstAttribute="centerX" secondItem="20b-RC-B54" secondAttribute="centerX" id="y7t-0a-Xii"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="20b-RC-B54" secondAttribute="trailing" constant="39" id="4I6-2g-Rvd"/>
+                            <constraint firstItem="20b-RC-B54" firstAttribute="leading" secondItem="863-re-qad" secondAttribute="leadingMargin" constant="39" id="5Jo-rK-Wjl"/>
+                            <constraint firstItem="dvf-VE-CdS" firstAttribute="top" secondItem="DDl-4N-iXD" secondAttribute="bottom" constant="28" id="5gA-K3-VPA"/>
+                            <constraint firstItem="YJc-AZ-Env" firstAttribute="centerX" secondItem="dvf-VE-CdS" secondAttribute="centerX" id="5lb-ow-HRz"/>
+                            <constraint firstItem="DDl-4N-iXD" firstAttribute="leading" secondItem="863-re-qad" secondAttribute="leadingMargin" constant="9" id="6fU-Jz-XkW"/>
+                            <constraint firstItem="YJc-AZ-Env" firstAttribute="top" secondItem="woG-Wk-39p" secondAttribute="bottom" constant="99" id="7dT-oC-p66"/>
+                            <constraint firstItem="YJc-AZ-Env" firstAttribute="centerX" secondItem="20b-RC-B54" secondAttribute="centerX" id="Hkk-en-AcG"/>
+                            <constraint firstItem="20b-RC-B54" firstAttribute="top" secondItem="woG-Wk-39p" secondAttribute="bottom" constant="8" id="K60-YK-tnC"/>
+                            <constraint firstItem="YJc-AZ-Env" firstAttribute="top" secondItem="20b-RC-B54" secondAttribute="bottom" constant="8" symbolic="YES" id="a01-RD-hOi"/>
+                            <constraint firstItem="1cq-b5-XN3" firstAttribute="top" secondItem="DDl-4N-iXD" secondAttribute="bottom" constant="237" id="d5b-Yf-c7x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DDl-4N-iXD" secondAttribute="trailing" constant="9" id="ktt-ce-T0K"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="20b-RC-B54"/>
-                                <exclude reference="YJc-AZ-Env"/>
-                                <exclude reference="dvf-VE-CdS"/>
                                 <exclude reference="DDl-4N-iXD"/>
+                                <exclude reference="dvf-VE-CdS"/>
+                                <exclude reference="YJc-AZ-Env"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Acv-yr-obg"/>
-                                <exclude reference="N5x-dz-R0g"/>
-                                <exclude reference="ud5-V1-uFh"/>
-                                <exclude reference="9Lj-CG-BV9"/>
-                                <exclude reference="EYP-HZ-fKj"/>
-                                <exclude reference="Y2d-xR-Tat"/>
-                                <exclude reference="nu6-Uf-SpC"/>
-                                <exclude reference="y7t-0a-Xii"/>
-                                <exclude reference="G4k-IA-nlq"/>
-                                <exclude reference="B4x-HX-QnT"/>
+                                <exclude reference="4I6-2g-Rvd"/>
+                                <exclude reference="5Jo-rK-Wjl"/>
+                                <exclude reference="K60-YK-tnC"/>
+                                <exclude reference="5lb-ow-HRz"/>
+                                <exclude reference="7dT-oC-p66"/>
+                                <exclude reference="Hkk-en-AcG"/>
+                                <exclude reference="a01-RD-hOi"/>
+                                <exclude reference="6fU-Jz-XkW"/>
+                                <exclude reference="ktt-ce-T0K"/>
+                                <exclude reference="5gA-K3-VPA"/>
+                                <exclude reference="d5b-Yf-c7x"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -193,21 +212,22 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="YJc-AZ-Env"/>
-                                <include reference="dvf-VE-CdS"/>
                                 <include reference="DDl-4N-iXD"/>
+                                <include reference="dvf-VE-CdS"/>
+                                <include reference="YJc-AZ-Env"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Acv-yr-obg"/>
-                                <include reference="N5x-dz-R0g"/>
-                                <include reference="ud5-V1-uFh"/>
-                                <include reference="9Lj-CG-BV9"/>
-                                <include reference="EYP-HZ-fKj"/>
-                                <include reference="Y2d-xR-Tat"/>
-                                <include reference="nu6-Uf-SpC"/>
-                                <include reference="y7t-0a-Xii"/>
-                                <include reference="G4k-IA-nlq"/>
-                                <include reference="B4x-HX-QnT"/>
+                                <include reference="4I6-2g-Rvd"/>
+                                <include reference="5Jo-rK-Wjl"/>
+                                <include reference="K60-YK-tnC"/>
+                                <include reference="5lb-ow-HRz"/>
+                                <include reference="7dT-oC-p66"/>
+                                <include reference="Hkk-en-AcG"/>
+                                <include reference="a01-RD-hOi"/>
+                                <include reference="6fU-Jz-XkW"/>
+                                <include reference="ktt-ce-T0K"/>
+                                <include reference="5gA-K3-VPA"/>
+                                <include reference="d5b-Yf-c7x"/>
                             </mask>
                         </variation>
                     </view>
