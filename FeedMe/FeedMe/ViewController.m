@@ -11,7 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface ViewController () {
-    // @property (strong, nonatomic) CLLocationManager *locationManager;
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
 }
@@ -31,21 +30,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/search/json?location=33.7167,73.0667&radius=500&type=funeral_home&sensor=false&key=AIzaSyDN1QX-gWUR-mIYo_D21PNFLHHpNQkIkGU"]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSError *jsonParsingError = nil;
+    NSArray *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonParsingError];
+    // NSLog(@"%@", data);
+    NSDictionary *result;
+    for (int i=0; i < [data count]; i++) {
+        result = [data objectAtIndex:i];
+        NSLog(@"%@", result);
+        //NSLog(@"Returned item: %@", [result objectForKey:@"name"]);
+    }
     [self initUI];
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];
     [self initLocationListener];
-
-    //self.foodReports = [[NSArray alloc] initWithObjects: @"Food 1", @"Food 2", @"Food 3", nil];
 }
 
-- (void) initLocationListener {
+- (void)initLocationListener {
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-   
-//    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-//        [self.locationManager requestAlwaysAuthorization];
-//        NSLog(@"made it here");
-//    }
     [locationManager requestAlwaysAuthorization];
     [locationManager requestWhenInUseAuthorization];
     locationManager.distanceFilter = kCLDistanceFilterNone;
