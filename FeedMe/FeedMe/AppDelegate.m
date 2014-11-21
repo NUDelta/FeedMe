@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -47,6 +46,7 @@
         // This is the first launch ever
         self.firstLaunch = YES;
     }
+    [RestKitManager sharedManager];
     return YES;
 }
 

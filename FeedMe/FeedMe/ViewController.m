@@ -30,17 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/search/json?location=33.7167,73.0667&radius=500&type=funeral_home&sensor=false&key=AIzaSyDN1QX-gWUR-mIYo_D21PNFLHHpNQkIkGU"]];
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSError *jsonParsingError = nil;
-    NSArray *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonParsingError];
-    // NSLog(@"%@", data);
-    NSDictionary *result;
-    for (int i=0; i < [data count]; i++) {
-        result = [data objectAtIndex:i];
-        NSLog(@"%@", result);
-        //NSLog(@"Returned item: %@", [result objectForKey:@"name"]);
-    }
     [self initUI];
     [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^(void){}];
     [self initLocationListener];

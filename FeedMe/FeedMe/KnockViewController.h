@@ -13,12 +13,9 @@
 #import <Parse/Parse.h>
 #import "coreMotionListener.h"
 #import "knockDetector.h"
+#import "GazeTask.h"
 
 @interface KnockViewController : UIViewController<UIAlertViewDelegate, KnockDetectorDelegate, CLLocationManagerDelegate>
-/*- (void)detectorDidDetectKnock:(knockDetector*) detector;
-@property knockDetector *theDetector;
-@property (strong, nonatomic) NSString *foodReport;
-- (void)saveReport;
-- (void)stopTrackingLocation;*/
+
 @end
 

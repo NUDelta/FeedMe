@@ -137,7 +137,11 @@
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
     //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Tapped"];
     // [self messageNearbyUsers];
-    
+    GazeTask *task = [[GazeTask alloc] init];
+    task.question = @"Food in Ford?";
+    task.lat = [NSNumber numberWithDouble:42.0549];
+    task.lon = [NSNumber numberWithDouble:-87.6739];
+    [task postTask];
     [self saveReport];
 }
 

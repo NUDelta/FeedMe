@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "RestKitManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
