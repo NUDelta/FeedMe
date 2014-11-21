@@ -27,6 +27,9 @@
 
 	        	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+	        	// use the centroid and calculate the radius to the farthest point?
+
+
 	        	dataURL = "buildings.json";
 	        	$.getJSON(dataURL, function(data) {
 	        		var item = data[1];
