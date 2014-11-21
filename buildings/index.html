@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Buildings!!!</title>
+		<style type="text/css">
+	      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+	    </style>
+	    <script type="text/javascript"
+	      src="https://maps.googleapis.com/maps/api/js?key=1A2Q23-W_D4xaIn0BWhMwioE">
+	    </script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div id="map-canvas"></div>
+
+		<script>
+			function initialize() {
+	        	var map;
+	        	var myLatLng = new google.maps.LatLng(42.0549,-87.6739);
+	        	var mapOptions = {
+	        		zoom: 16,
+	        		center: myLatLng
+	        	}
+
+	        	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	        	dataURL = "buildings.json";
+	        	$.getJSON(dataURL, function(data) {
+	        		var item = data[1];
+	        		//$.each(data, function(i, item) {
+	        			var points = item.Facility.the_points;
+	        			//console.log(points);
+
+	        			var coords = points.split(",").forEach(function(x) {
+	        				var nested_coord = x.split("|");
+	        				if (nested_coord.length == 1) {
+
+	        				} else {
+	        					var latitude = nested_coord[1];
+		        				var longitude = nested_coord[0];
+		        				var latlng = new google.maps.LatLng(latitude, longitude);
+
+	        					new google.maps.Marker({
+			        				position: latlng,
+			        				map: map
+			        			});
+	        				}
+	        			});
+	        	});
+	      }
+	      google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	</body>
+</html>
