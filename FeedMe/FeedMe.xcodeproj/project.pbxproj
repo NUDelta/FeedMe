@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E53821E31A1DA44A0092D6D7 /* UIColor+BiteNow.m in Sources */ = {isa = PBXBuildFile; fileRef = E53821E01A1DA44A0092D6D7 /* UIColor+BiteNow.m */; };
 		E53821E41A1DA44A0092D6D7 /* UIImage+BiteNow.m in Sources */ = {isa = PBXBuildFile; fileRef = E53821E21A1DA44A0092D6D7 /* UIImage+BiteNow.m */; };
+		E5450EF21A1EE29900742131 /* ARAudioRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5450EF01A1EE29900742131 /* ARAudioRecognizer.m */; };
 		E56D1B671A01BFC300FF5372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B661A01BFC300FF5372 /* main.m */; };
 		E56D1B6A1A01BFC300FF5372 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B691A01BFC300FF5372 /* AppDelegate.m */; };
 		E56D1B6D1A01BFC300FF5372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1B6C1A01BFC300FF5372 /* ViewController.m */; };
@@ -53,6 +54,9 @@
 		E53821E11A1DA44A0092D6D7 /* UIImage+BiteNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+BiteNow.h"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIImage+BiteNow.h"; sourceTree = "<group>"; };
 		E53821E21A1DA44A0092D6D7 /* UIImage+BiteNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+BiteNow.m"; path = "../../../../Downloads/BiteNow-master 2/BiteNow/BiteNow/UIImage+BiteNow.m"; sourceTree = "<group>"; };
 		E53821E51A1DA4B40092D6D7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E5450EEF1A1EE29900742131 /* ARAudioRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARAudioRecognizer.h; path = ../../../../Downloads/ARAudioRecognizer.h; sourceTree = "<group>"; };
+		E5450EF01A1EE29900742131 /* ARAudioRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARAudioRecognizer.m; path = ../../../../Downloads/ARAudioRecognizer.m; sourceTree = "<group>"; };
+		E5450EF11A1EE29900742131 /* ARAudioRecognizerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARAudioRecognizerDelegate.h; path = ../../../../Downloads/ARAudioRecognizerDelegate.h; sourceTree = "<group>"; };
 		E56D1B611A01BFC300FF5372 /* FeedMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56D1B651A01BFC300FF5372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E56D1B661A01BFC300FF5372 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +161,9 @@
 		E56D1B631A01BFC300FF5372 /* FeedMe */ = {
 			isa = PBXGroup;
 			children = (
+				E5450EEF1A1EE29900742131 /* ARAudioRecognizer.h */,
+				E5450EF01A1EE29900742131 /* ARAudioRecognizer.m */,
+				E5450EF11A1EE29900742131 /* ARAudioRecognizerDelegate.h */,
 				E53821DF1A1DA44A0092D6D7 /* UIColor+BiteNow.h */,
 				E53821E01A1DA44A0092D6D7 /* UIColor+BiteNow.m */,
 				E53821E11A1DA44A0092D6D7 /* UIImage+BiteNow.h */,
@@ -330,6 +337,7 @@
 				E56D1BA91A01CCAD00FF5372 /* coreMotionListener.m in Sources */,
 				E53821E31A1DA44A0092D6D7 /* UIColor+BiteNow.m in Sources */,
 				E56D1B671A01BFC300FF5372 /* main.m in Sources */,
+				E5450EF21A1EE29900742131 /* ARAudioRecognizer.m in Sources */,
 				E56D1BB21A01D5A300FF5372 /* knockDetector.m in Sources */,
 				E56D1BAD1A01CD1500FF5372 /* KnockViewController.m in Sources */,
 			);
